@@ -10,7 +10,7 @@ const Banner = () => {
               Hello, welcomes hear to learn something{" "}
               <spam className="text-pink-500">new everday!!!</spam>
             </h1>
-            <p className="tex-xl ">
+            <p className="text-xl ">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Similique fugit itaque delectus enim, magni inventore praesentium
               recusandae ea. Eum aliquam consequatur numquam earum temporibus
