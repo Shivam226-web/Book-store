@@ -138,7 +138,6 @@ const Navbar = () => {
               </svg>
             )}
           </button>
-
           <div>
             <button
               onClick={() => document.getElementById("my_modal_3").showModal()}

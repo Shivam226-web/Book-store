@@ -1,8 +1,15 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Login from './Login';
-
+import { useForm } from "react-hook-form";
 function Signup() {
+   const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm();
+  
+    const onSubmit = (data) => console.log(data);
   const modalRef = useRef(null);
 
   const closeModal = () => {
@@ -15,14 +22,14 @@ function Signup() {
       <dialog id="signup_modal" className="modal" ref={modalRef} open>
         <div className="modal-box relative">
           {/* Close button */}
-          <form method="dialog">
+          <form onSubmit={handleSubmit(onSubmit)} method="dialog">
             <Link to="/"
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
               onClick={closeModal}
             >
               ✕
             </Link>
-          </form>
+          
 
           <h3 className="font-bold text-lg mb-4">Signup</h3>
 
@@ -35,7 +42,10 @@ function Signup() {
               type="text"
               placeholder="Enter your full name"
               className="input input-bordered w-full"
+               {...register("text", { required: true })}
             />
+              <br />
+               {errors.text && <span className="text-sm text-red-500">This field is required</span>}
           </div>
 
           {/* Email */}
@@ -47,7 +57,10 @@ function Signup() {
               type="email"
               placeholder="Enter your email"
               className="input input-bordered w-full"
+               {...register("email", { required: true })}
             />
+              <br />
+               {errors.email && <span className="text-sm text-red-500">This field is required</span>}
           </div>
 
           {/* Password */}
@@ -59,7 +72,10 @@ function Signup() {
               type="password"
               placeholder="Enter your password"
               className="input input-bordered w-full"
+               {...register("Password", { required: true })}
             />
+              <br />
+               {errors.Password && <span className="text-sm text-red-500">This field is required</span>}
           </div>
 
           {/* Actions */}
@@ -73,6 +89,7 @@ function Signup() {
               <Login/>
             </p>
           </div>
+          </form>
         </div>
       </dialog>
     </div>
