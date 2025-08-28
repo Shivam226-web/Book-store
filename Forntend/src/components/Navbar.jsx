@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Login from "./Login";
+import { useAuth } from "../context/AuthProvider";
+import Logout from "./Logout";
 
 const Navbar = () => {
+ const [authUser, setAuthUser]= useAuth()
+   console.log(authUser)
+ 
   const [theme, setTheme] = useState(
     () => localStorage.getItem("theme") || "light"
   );
@@ -138,6 +143,8 @@ const Navbar = () => {
               </svg>
             )}
           </button>
+          {
+            authUser?(<Logout/>):(
           <div>
             <button
               onClick={() => document.getElementById("my_modal_3").showModal()}
@@ -146,7 +153,8 @@ const Navbar = () => {
               Login
             </button>
             <Login/>
-          </div>
+          </div>)
+          }
         </div>
       </div>
     </div>
